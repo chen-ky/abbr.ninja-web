@@ -1,0 +1,92 @@
+/* https://www.canva.com/colors/color-palettes/freeze-this-moment/ */
+body {
+  background-color: #fff;
+  color: #000;
+}
+
+nav a, footer a {
+  color: #fff;
+}
+
+.announcement.error {
+  border: 1px solid crimson;
+  background-color:lightcoral;
+  color: #350000;
+}
+
+.announcement.warning {
+  border: 1px solid darkgoldenrod;
+  background-color:lightyellow;
+  color: saddlebrown;
+}
+
+.announcement.ok {
+  border: 1px solid limegreen;
+  background-color:lightgreen;
+  color: #004d00;
+}
+
+.announcement.info {
+  border: 1px solid cornflowerblue;
+  background-color:lightblue;
+  color:#00368b;
+}
+
+.main {
+  background-color: #fff;
+}
+
+.main a:link {
+  color:#0978a4;
+}
+
+.main a:visited {
+  color:#ff80a0;
+}
+
+.top-nav, .footer-box {
+  background-color: #036;
+  color: #fff;
+}
+
+.top-nav {
+  border-bottom: 5px solid #71b1c5;
+}
+
+.footer-box {
+  border-top: 5px solid #71b1c5;
+}
+
+nav > ul a:hover {
+  background-color: #71b1c5;
+  color: #036;
+}
+
+input.required {
+  border: 1px solid red !important;
+  box-shadow: 0 0 5px red !important;
+}
+
+#submit-btn:active {
+  box-shadow: 3px 3px 2px darkgrey;
+}
+
+#uri-input, #submit-btn {
+  border: 1px solid grey;
+  box-shadow: 3px 3px 5px darkgrey;
+}
+
+#uri-input {
+  padding: 2px 20px;
+  margin: 0 5px;
+  font-size: inherit;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#uri-input:focus {
+  outline: none;
+}
+
+#result {
+  font-family: 'Courier New', Courier, monospace;
+}

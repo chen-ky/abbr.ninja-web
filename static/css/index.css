@@ -1,0 +1,147 @@
+@import url(theme/dark_theme.css) (prefers-color-scheme: dark);
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100%;
+}
+
+.limit-width {
+  max-width: 1920px;
+  margin: auto;
+}
+
+.mono-inline {
+  display: inline;
+}
+
+.crypto-address {
+  margin: 8px 0;
+  font-family: monospace;
+  overflow: auto;
+  width: fit-content;
+}
+
+.announcement {
+  padding: 8px;
+  text-align: center;
+  position: relative;
+  z-index: 9;
+}
+
+.top-nav, .footer-box {
+  width: 100%;
+}
+
+nav {
+  padding: 10px 50px 0 50px;
+}
+
+footer {
+  padding: 20px 50px;
+}
+
+nav > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.top-nav > nav {
+  display: grid;
+}
+
+.top-nav ul > li {
+  grid-template-rows: repeat(5, 0.5fr);
+}
+
+nav a {
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.top-nav ul a {
+  width: min-content;
+}
+
+.main {
+  padding-bottom: 260px; /*footer height */
+}
+
+#content {
+  padding: 30px 55px;
+}
+
+.shorten-bar-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 25px 10px;
+}
+
+.shorten-box > .result-box {
+  margin: 5px;
+}
+
+#uri-input, #submit-btn {
+  height: 30px;
+  border-radius: 20px;
+  margin: 10px;
+}
+
+#uri-input {
+  width: 50%;
+  /* min-width: 200px; */
+}
+
+#submit-btn {
+  padding: 5px 15px;
+}
+
+#submit-btn:active {
+  transform: translateY(2px);
+}
+
+.result-box {
+  text-align: center;
+}
+
+.footer-box {
+  height: 260px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 900px) {
+  #content {
+    padding: 20px;
+  }
+
+  nav {
+    padding: 10px 20px 0 20px;
+  }
+  
+  footer {
+    padding: 10px 20px;
+  }
+
+  #uri-input {
+    width: 80%;
+  }
+}

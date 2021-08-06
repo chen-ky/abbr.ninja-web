@@ -1,0 +1,91 @@
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+nav a, footer a {
+  color: #fff;
+}
+
+.announcement.error {
+  border: 1px solid crimson;
+  background-color:lightcoral;
+  color: #350000;
+}
+
+.announcement.warning {
+  border: 1px solid darkgoldenrod;
+  background-color:lightyellow;
+  color: saddlebrown;
+}
+
+.announcement.ok {
+  border: 1px solid limegreen;
+  background-color:lightgreen;
+  color: #004d00;
+}
+
+.announcement.info {
+  border: 1px solid cornflowerblue;
+  background-color:lightblue;
+  color:#00368b;
+}
+
+.main {
+  background-color: #000;
+}
+
+.main a:link {
+  color:#7affed;
+}
+
+.main a:visited {
+  color:#ff80a0;
+}
+
+.top-nav, .footer-box {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.top-nav {
+  border-bottom: 2px solid grey;
+}
+
+.footer-box {
+  border-top: 2px solid grey;
+}
+
+nav > ul a:hover {
+  background-color: grey;
+  color: inherit;
+}
+
+input.required {
+  border: 1px solid red !important;
+  box-shadow: 0 0 15px red !important;
+}
+
+#submit-btn:active {
+  box-shadow: 3px 3px 2px darkgrey;
+}
+
+#uri-input, #submit-btn {
+  border: 1px solid grey;
+  box-shadow: 3px 3px 5px darkgrey;
+}
+
+#uri-input {
+  padding: 2px 20px;
+  margin: 0 5px;
+  font-size: inherit;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#uri-input:focus {
+  outline: none;
+}
+
+#result {
+  font-family: 'Courier New', Courier, monospace;
+}

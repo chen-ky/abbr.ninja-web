@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Home - abbr.ninja</title>
+    <meta name="description" content="A URL/URI shortener website.">
+    <!-- Open Graph metadata -->
+    <meta property="og:title" content="Home - abbr.ninja">
+    <meta property="og:description" content="Homepage for a link shortener.">
+    <!-- <meta property="og:image" content=""> -->
+    <meta property="og:type" content="website">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#003366">
+
+    <!-- <link rel="icon" href=""> -->
+
+    <link rel="stylesheet" href="static/css/theme/light_theme.css" preload>
+    <link rel="stylesheet" href="static/css/index.css">
+
+    <script src="static/js/index.js" defer></script>
+  </head>
+
+  <body>
+    <div id="page-container">
+
+      <div class="top-nav">
+        <nav class="limit-width">
+          <a href="/"><h1>abbr.ninja</h1></a>
+          <ul>
+            <li><a href="https://api.abbr.ninja">API</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- error, warning, ok , info class -->
+      <div class="announcement info">
+        Note: This frontend is just a prototype.
+      </div>
+
+      <div class="main limit-width">
+        <div id="content">
+          <div class="shorten-box">
+            <div class="shorten-bar-box">
+              <label for="uri-input" hidden>Enter your URI:</label>
+              <input type="url" id="uri-input" name="long-uri" placeholder="Enter URI..." oninput="isEmpty('uri-input')" autocomplete="off" required>
+              <input type="submit" id="submit-btn" value="Shorten">
+            </div>
+            <div class="result-box">
+              <span id=result></span>
+            </div>
+          </div>
+
+          <div id="features">
+            <h2>Features</h2>
+            <ul>
+              <li>Supports
+                <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier" target="_blank" rel="noopener"><abbr title="Uniform Resource Identifier">URI</abbr>s</a>
+                (<pre class="mono-inline">http://</pre>, <pre class="mono-inline">ssh://</pre>, <pre class="mono-inline">bitcoin:</pre>, etc..),
+                <a href="https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier" target="_blank" rel="noopener"><abbr title="Internationalized Resource Identifier">IRI</abbr>s</a>
+                and <a href="https://en.wikipedia.org/wiki/Internationalized_domain_name" target="_blank" rel="noopener"><abbr title="Internationalized Domain Name">IDN</abbr>s</a>.
+              </li>
+              <li>Privacy friendly. We do not track what link you create or visited.</li>
+              <li>Modular. Write your own front end or integrate the <abbr title="Application Programming Interface">API</abbr> into other applications.</li>
+            </ul>
+
+            <h2>Todo</h2>
+            <ul>
+              <li>Setting page for customization of site behavior.</li>
+              <li>Save generated links in browser.</li>
+              <li>No automatic redirection. Preview link and decide if you want to visit the website. Great for security conscious user.</li>
+              <li>Ability to disable ads.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-box">
+        <footer class=limit-width>
+          <emph>Donate</emph> to help subsidies development and server costs
+          <ul>
+            <li><abbr title="Bitcoin">BTC</abbr>:
+              <a href="bitcoin:bc1qww8sktvenl044juafgvt068yah9dxuwrhht4kq?message=URI%20Shortener%20Donation">
+                <pre class="crypto-address">bc1qww8sktvenl044juafgvt068yah9dxuwrhht4kq</pre>
+              </a>
+              <a href="bitcoin:16G7WnKzNdYc48NtEeiVuLNeaLcoXBw1K4?message=URI%20Shortener%20Donation">
+                <pre class="crypto-address">16G7WnKzNdYc48NtEeiVuLNeaLcoXBw1K4</pre>
+              </a>
+          </li>
+            <li><abbr title="Ethereum">ETH</abbr>: <a href="ethereum:0x5d67690768F0Fc4780c578393Ca567e5bCb38378"><pre class="crypto-address">0x5d67690768F0Fc4780c578393Ca567e5bCb38378</pre></a></li>
+          </ul>
+
+          <ul>
+            <li><a href="https://github.com/chen-ky/abbr.ninja-web" target="_blank" rel="noopener">Source code</a></li>
+          </ul>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
