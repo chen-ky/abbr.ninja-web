@@ -54,7 +54,7 @@ if "__main__" == __name__:
     required_env = ["API_BASE_URL"]
     for env in required_env:
         assert env in os.environ, f"'{env}' environment variable not set."
-    API_BASE_URL = os.environ["API_BASE_URL"].strip().strip("/")
+    API_BASE_URL = os.getenv("API_BASE_URL").strip().strip("/")
     if not API_BASE_URL.startswith("http://") \
     and not API_BASE_URL.startswith("https://"):
         API_BASE_URL = "http://" + API_BASE_URL
@@ -63,9 +63,9 @@ if "__main__" == __name__:
     port = 8080
 
     if "HOST" in os.environ:
-        host = os.environ["HOST"]
+        host = os.getenv("HOST")
     if "PORT" in os.environ:
-        port = int(os.environ["PORT"])
+        port = int(os.getenv("PORT"))
 
     server = Server((host, port), app, server_name="abbr.ninja-web/0.1.0")    
     print(f"Listening on {host}:{port}")

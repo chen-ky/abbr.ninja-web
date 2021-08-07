@@ -1,5 +1,6 @@
 const API_BASE_URL = "https://api.abbr.ninja/api/v1"
 const FRONTEND_URL = "abbr.ninja"
+// const DEFAULT_SCHEME = "http"
 
 function isEmpty(id) {
     const input_box = document.getElementById(id);
@@ -11,44 +12,71 @@ function isEmpty(id) {
     return false
 }
 
+function setResultText(msg, is_error=false, as_html=false) {
+    const result_box = document.getElementById("result");
+    if (is_error) {
+        result_box.className = "error-text";
+    } else {
+        result_box.className = null;
+    }
+    if (!as_html) {
+        result_box.innerText = msg;
+    } else {
+        result_box.innerHTML = msg;
+    }
+}
+
 function shorten() {
     if (isEmpty("uri-input")) {
-        document.getElementById("result").innerHTML = null;
-        document.getElementById("result").innerText = null;
-        return
+        setResultText(null);
+        return;
     }
-    document.getElementById("result").style.color = "inherit";
-    document.getElementById("result").innerText = "Shortening... Please wait...";
+    setResultText("Shortening... Please wait...");
     
-    const txt = document.getElementById("uri-input").value;
-    const req = new XMLHttpRequest();
-    const payload = {'uri': txt}
-    // console.log(payload);
-    req.open("POST", `${API_BASE_URL}/shorten`);
-    req.setRequestHeader("Content-Type", "application/json");
-    req.send(JSON.stringify(payload));
-    req.onload = function() {
-        const result = document.getElementById("result");
-        if (req.status === 400) {
-            const msg = JSON.parse(req.response)["msg"];
-            result.style.color = "red";
-            result.innerText = msg;
-        } else if (req.status === 200) {
-            const response = JSON.parse(req.response);
-            const path = `/r/${response["id"]}`;
-            const retrieve_link = `${FRONTEND_URL}${path}`;
-            result.innerHTML = `<a id="result-link" href=${path} target="_blank" rel="noopener"></a>`
-            document.getElementById("result-link").innerText = retrieve_link;
-        } else {
-            result.style.color = "red";
-            result.innerText = `${req.status}: ${req.statusText}`;
-        }
-    };
-    req.onerror = function() {
-        const result = document.getElementById("result");
-        result.style.color = "red";
-        result.innerText = `Network error.`;
-    };
+    const long_uri = document.getElementById("uri-input").value;
+    
+    let http_code;
+    postReq(`${API_BASE_URL}/shorten`, {"uri": long_uri})
+        .then(response => {
+            http_code = response.status;
+            if (response.status === 200 || response.status === 400) {
+                return response.json();
+            } else {
+                setResultText(`${response.status}: ${response.statusText}`, true);
+                return null;
+            }
+        })
+        .catch( error => {
+            console.error(error);
+            setResultText("Network error, please try again later.", true);
+            return null;
+        })
+        .then(val => {
+            if (val === null) {
+                return;
+            }
+            if (http_code === 200) {
+                const path = `/r/${val["id"]}`;
+                const retrieve_link = `${FRONTEND_URL}${path}`;
+                setResultText(`<a id="result-link" href=${path} target="_blank" rel="noopener">${retrieve_link}</a>`, false, true);
+            } else if (http_code === 400) {
+                setResultText(`Bad request: ${val["msg"]}`, true);
+            } else {
+                setResultText(`Something has gone wrong. Please try again later.`, true);
+                console.error(`$ERROR: ${http_code}`);
+            }
+        });
+}
+
+async function postReq(url = "", data = {}) {
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+    return response;
 }
 
 function listenShortReq() {

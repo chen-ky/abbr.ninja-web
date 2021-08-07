@@ -31,6 +31,10 @@ nav a, footer a {
   color:#00368b;
 }
 
+.error-text {
+  color:orangered;
+}
+
 .main {
   background-color: #000;
 }
