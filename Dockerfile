@@ -3,28 +3,28 @@ FROM docker.io/library/python:alpine
 RUN apk update \
     && apk upgrade
 
-RUN pip install \
-    bottle \
-    paste \
-    requests
-
 RUN adduser -H -D web
 
 WORKDIR "/srv/shortener_frontend/"
 
-COPY index.html index.html
-COPY robots.txt robots.txt
-COPY server.py server.py
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY *.py .
 COPY static static/.
 
-RUN chown -R web:web /srv/shortener_frontend/
-RUN chmod 0550 -R /srv/shortener_frontend/ \
-    && chmod 0440 /srv/shortener_frontend/*.html \
+RUN chown -R web:web /srv/shortener_frontend/ \
+    && chmod 0550 -R /srv/shortener_frontend/ \
     && chmod 0440 /srv/shortener_frontend/static/css/*.css \
     && chmod 0440 /srv/shortener_frontend/static/css/theme/*.css \
-    && chmod 0440 /srv/shortener_frontend/static/js/*.js
+    && chmod 0440 /srv/shortener_frontend/static/js/*.js \
+    && chmod 0440 /srv/shortener_frontend/static/*.html \
+    && chmod 0440 /srv/shortener_frontend/static/*.txt
 
 EXPOSE 8080
-
 USER web:web
-ENTRYPOINT ["python", "server.py"]
+
+ENV API_BASE_URL="http://127.0.0.1:8081/api/v1"
+ENV HOST="0.0.0.0"
+ENV PORT="8080"
+CMD ["python", "server.py"]

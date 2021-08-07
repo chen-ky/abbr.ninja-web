@@ -14,7 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 from bottle import Bottle, run, static_file, response
+from cheroot.wsgi import Server
 import requests
 
 API_BASE_URL = "http://127.0.0.1:8081/api/v1"
@@ -22,20 +24,7 @@ app = Bottle()
 
 @app.route("/", method = "GET")
 def index():
-    return static_file("index.html", ".")
-
-@app.route("/favicon.ico", method = "GET")
-def get_favicon():
-    response.status = 404
-    return None
-
-@app.route("/robots.txt", method = "GET")
-def get_robots():
-    return static_file("robots.txt", ".")
-
-@app.route("/static/<path:path>", method = "GET")
-def resources(path):
-    return static_file(path, root="static")
+    return static_file("index.html", "static")
 
 @app.route("/r/<id>", method="GET")
 def redirect(id):
@@ -57,5 +46,31 @@ def redirect(id):
         result.body = "Not Found"
     return result
 
+@app.route("/<path:path>", method = "GET")
+def resources(path):
+    return static_file(path, root="static")
+
 if "__main__" == __name__:
-    run(app, host="0.0.0.0", port=8080, server='paste')
+    required_env = ["API_BASE_URL"]
+    for env in required_env:
+        assert env in os.environ, f"'{env}' environment variable not set."
+    API_BASE_URL = os.environ["API_BASE_URL"].strip().strip("/")
+    if not API_BASE_URL.startswith("http://") \
+    and not API_BASE_URL.startswith("https://"):
+        API_BASE_URL = "http://" + API_BASE_URL
+
+    host = "localhost"
+    port = 8080
+
+    if "HOST" in os.environ:
+        host = os.environ["HOST"]
+    if "PORT" in os.environ:
+        port = int(os.environ["PORT"])
+
+    server = Server((host, port), app, server_name="abbr.ninja-web/0.1.0")    
+    print(f"Listening on {host}:{port}")
+    print(f"API server: {API_BASE_URL}")
+    try:
+        server.safe_start()
+    except KeyboardInterrupt:
+        server.stop()
