@@ -15,7 +15,8 @@ for `docker`.
 1. Clone this repository. `git clone https://github.com/chen-ky/abbr.ninja-web.git`
 2. Change directory into the cloned repository. `cd abbr.ninja-web`
 3. Build the container with the provided Dockerfile. `podman build -t <INSERT_CONTAINER_TAG_NAME> .`
-4. Run the newly built container. `podman run -p 8080:8080 -e API_BASE_URL="<INSERT_URL_FOR_API_SERVER> -d -t <INSERT_CONTAINER_TAG_NAME>"`
+4. Run the newly built container. `podman run -p 8080:8080 -e API_BASE_URL="<INSERT_URL_FOR_API_SERVER>" -d -t <INSERT_CONTAINER_TAG_NAME>"`
+5. You should be able to go to [http://localhost:8080](http://localhost:8080) for the webpage.
 
 
 ## Environment Variables for Container
