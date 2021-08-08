@@ -1,5 +1,5 @@
 const API_BASE_URL = "https://api.abbr.ninja/api/v1"
-const FRONTEND_URL = "abbr.ninja"
+const FRONTEND_URL = new URL(document.URL).host
 // const DEFAULT_SCHEME = "http"
 
 function isEmpty(id) {
