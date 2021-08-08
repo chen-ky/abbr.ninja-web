@@ -17,7 +17,7 @@ function setResultText(msg, is_error=false, as_html=false) {
     if (is_error) {
         result_box.className = "error-text";
     } else {
-        result_box.className = null;
+        result_box.className = "";
     }
     if (!as_html) {
         result_box.innerText = msg;
