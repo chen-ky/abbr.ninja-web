@@ -5,7 +5,7 @@ This is the frontend code for the link shortener on [abbr.ninja](https://abbr.ni
 
 Source code for:
 * [API documentation](https://github.com/chen-ky/abbr.ninja-api-doc)
-* API server
+* [API server](https://github.com/chen-ky/abbr.ninja-api-server)
 
 ## Building the Container
 
