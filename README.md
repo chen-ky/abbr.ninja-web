@@ -1,6 +1,6 @@
 # abbr.ninja Frontend
 
-This is the frontend code for a link shortener on [abbr.ninja](https://abbr.ninja/).
+This is the frontend code for the link shortener on [abbr.ninja](https://abbr.ninja/).
 
 
 Source code for:
@@ -13,7 +13,7 @@ Source code for:
 for `docker`.
 
 1. Clone this repository. `git clone https://github.com/chen-ky/abbr.ninja-web.git`
-2. Change directory into the cloned repository. `cd abbr.ninja-web.git`
+2. Change directory into the cloned repository. `cd abbr.ninja-web`
 3. Build the container with the provided Dockerfile. `podman build -t <INSERT_CONTAINER_TAG_NAME> .`
 4. Run the newly built container. `podman run -p 8080:8080 -e API_BASE_URL="<INSERT_URL_FOR_API_SERVER> -d -t <INSERT_CONTAINER_TAG_NAME>"`
 
