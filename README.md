@@ -27,5 +27,14 @@ for `docker`.
 
 ## Deployment Recommendation
 
-* A nginx reverse proxy to this server is recommended since this server does not support configuration for TLS/SSL and for higher performance.
+* A nginx reverse proxy pointed to this server is recommended since this server does not support configuration for TLS/SSL and for higher performance.
 [How to Configure a Nginx HTTPs Reverse Proxy on Ubuntu Bionic - Scaleway](https://www.scaleway.com/en/docs/how-to-configure-nginx-reverse-proxy/)
+
+## Donations
+Feel free to donate if you find this helpful!
+
+* BTC:
+    * [`bc1qww8sktvenl044juafgvt068yah9dxuwrhht4kq`](bitcoin:bc1qww8sktvenl044juafgvt068yah9dxuwrhht4kq?message=abbr.ninja%20Donation)
+    * [`16G7WnKzNdYc48NtEeiVuLNeaLcoXBw1K4`](bitcoin:16G7WnKzNdYc48NtEeiVuLNeaLcoXBw1K4?message=abbr.ninja%20Donation)
+* ETH:
+    * [`0x5d67690768F0Fc4780c578393Ca567e5bCb38378`](ethereum:0x5d67690768F0Fc4780c578393Ca567e5bCb38378)
