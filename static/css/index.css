@@ -4,6 +4,7 @@ html, body {
   height: 100%;
   width: 100%;
   margin: 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 #page-container {
@@ -73,11 +74,13 @@ nav a {
 }
 
 .main {
-  padding-bottom: 260px; /*footer height */
+  padding-bottom: 250px; /*footer height */
 }
 
 #content {
-  padding: 30px 55px;
+  max-width: 1080px;
+  margin: auto;
+  padding: 30px;
 }
 
 .shorten-bar-box {
@@ -98,7 +101,7 @@ nav a {
 }
 
 #uri-input {
-  width: 50%;
+  width: 70%;
   /* min-width: 200px; */
 }
 
@@ -115,7 +118,8 @@ nav a {
 }
 
 .footer-box {
-  height: 260px;
+  height: 250px;
+  line-height: 1.5;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -129,17 +133,29 @@ footer a:hover {
   text-decoration: underline;
 }
 
-#donate-list {
+.footer-flex {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer-list {
   list-style-type: none;
   margin: 15px 0;
   padding: 0;
 }
 
-#donate-list > li {
+.footer-list > li {
   margin: 5px 0;
 }
 
-@media screen and (max-width: 900px) {
+#footer-end {
+  display: block;
+  font-size: 0.95em;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
   #content {
     padding: 20px;
   }
@@ -154,5 +170,16 @@ footer a:hover {
 
   #uri-input {
     width: 80%;
+  }
+}
+
+@media screen and (max-width: 543px) {
+/* Footer height hack */
+  .main {
+    padding-bottom: 350px; /*footer height */
+  }
+  
+  .footer-box {
+    height: 350px;
   }
 }
