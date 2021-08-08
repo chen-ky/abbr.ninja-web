@@ -16,13 +16,13 @@ html, body {
   margin: auto;
 }
 
-.mono-inline {
-  display: inline;
+.mono {
+  font-family: monospace;
 }
 
 .crypto-address {
-  margin: 8px 0;
   font-family: monospace;
+  margin: 8px 0;
   overflow: auto;
   width: fit-content;
 }
@@ -48,16 +48,16 @@ footer {
 
 nav > ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto 20px;
+  padding: 0 0 0 10px;
+  border-left: 1px solid #fff;
 }
 
 .top-nav > nav {
-  display: grid;
-}
-
-.top-nav ul > li {
-  grid-template-rows: repeat(5, 0.5fr);
+  display: flex;
+  flex-wrap: wrap;
 }
 
 nav a {
@@ -67,8 +67,9 @@ nav a {
   padding: 10px;
 }
 
-.top-nav ul a {
-  width: min-content;
+.top-nav ul > li {
+  margin: 0 10px;
+  border-bottom: 2px solid transparent;
 }
 
 .main {
@@ -126,6 +127,16 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+}
+
+#donate-list {
+  list-style-type: none;
+  margin: 15px 0;
+  padding: 0;
+}
+
+#donate-list > li {
+  margin: 5px 0;
 }
 
 @media screen and (max-width: 900px) {

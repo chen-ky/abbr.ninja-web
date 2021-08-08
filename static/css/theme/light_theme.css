@@ -61,9 +61,8 @@ nav a, footer a {
   border-top: 5px solid #71b1c5;
 }
 
-nav > ul a:hover {
-  background-color: #71b1c5;
-  color: #036;
+.top-nav ul > li:hover {
+  border-bottom: 2px solid white;
 }
 
 input.required {

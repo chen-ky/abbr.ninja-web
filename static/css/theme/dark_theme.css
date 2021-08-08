@@ -60,9 +60,8 @@ nav a, footer a {
   border-top: 2px solid grey;
 }
 
-nav > ul a:hover {
-  background-color: grey;
-  color: inherit;
+.top-nav ul > li:hover {
+  border-bottom: 2px solid white;
 }
 
 input.required {
