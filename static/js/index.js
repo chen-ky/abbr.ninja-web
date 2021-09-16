@@ -1,5 +1,9 @@
 const API_BASE_URL = "https://api.abbr.ninja/api/v1"
-const FRONTEND_URL = new URL(document.URL).host
+const getRootPage = () => {
+    let url = new URL(document.URL);
+    return url.protocol + "//" + url.host;
+};
+const FRONTEND_URL = getRootPage();
 // const DEFAULT_SCHEME = "http"
 
 function isEmpty(id) {
