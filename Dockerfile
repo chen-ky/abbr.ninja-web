@@ -12,6 +12,7 @@ RUN pip install -r requirements.txt
 
 COPY *.py .
 COPY static static/.
+COPY templates templates/.
 
 RUN chown -R web:web /srv/shortener_frontend/ \
     && chmod 0550 -R /srv/shortener_frontend/ \
