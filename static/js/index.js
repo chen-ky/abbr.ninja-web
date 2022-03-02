@@ -4,7 +4,7 @@ const getRootPage = () => {
     return url.protocol + "//" + url.host;
 };
 const FRONTEND_URL = getRootPage();
-// const DEFAULT_SCHEME = "http"
+const DEFAULT_SCHEME = "https://"
 
 function isEmpty(id) {
     const input_box = document.getElementById(id);
@@ -35,12 +35,33 @@ function shorten() {
         setResultText(null);
         return;
     }
+
+    try {
+        const long_uri = parseInputURI();
+        shortenReq(long_uri);
+    } catch (e) {
+        document.getElementById("uri-input").className = "required"; // Make input box red
+        setResultText("Invalid URI, please check your input", true);
+        return;
+    }
+}
+
+function parseInputURI() {
+    const uri = document.getElementById("uri-input")
+    try {
+        return new URL(uri.value);
+    } catch (TypeError) {
+        if (uri.value != "") {
+            uri.value = DEFAULT_SCHEME + uri.value;
+        }
+        return new URL(uri.value);
+    }
+}
+
+function shortenReq(long_uri) {
     setResultText("Shortening... Please wait...");
-    
-    const long_uri = document.getElementById("uri-input").value;
-    
     let http_code;
-    postReq(`${API_BASE_URL}/shorten`, {"uri": long_uri})
+    postReq(`${API_BASE_URL}/shorten`, {"uri": long_uri.href})
         .then(response => {
             http_code = response.status;
             if (response.status === 200 || response.status === 400) {
@@ -62,7 +83,7 @@ function shorten() {
             if (http_code === 200) {
                 const path = `/r/${val["id"]}`;
                 const retrieve_link = `${FRONTEND_URL}${path}`;
-                setResultText(`<a id="result-link" href=${path} target="_blank" rel="noopener">${retrieve_link}</a>`, false, true);
+                setResultText(`<a id="result-link" href=${path} target="_blank" rel="noopener nofollow">${retrieve_link}</a>`, false, true);
             } else if (http_code === 400) {
                 setResultText(`Bad request: ${val["msg"]}`, true);
             } else {
