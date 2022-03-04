@@ -17,6 +17,7 @@
       </nav>
     </div>
     <div id="page-container">
+      <p><em>Make sure you trust the link before clicking on it!</em></p>
       <p>Click on the link to go to: </p>
       <a href="{{encoded_uri}}" rel="noopener"><pre>{{html_safe_uri}}</pre></a>
     </div>
