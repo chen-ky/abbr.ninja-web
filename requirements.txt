@@ -1,5 +1,5 @@
 bottle==0.12.23
-certifi==2022.6.15
+certifi==2022.6.15.1
 charset-normalizer==2.0.12
 cheroot==8.6.0
 idna==3.3
