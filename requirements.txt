@@ -1,6 +1,6 @@
 bottle==0.12.23
 certifi==2022.9.24
-charset-normalizer==2.1.1
+charset-normalizer==3.0.0
 cheroot==8.6.0
 idna==3.4
 jaraco.functools==3.5.2
