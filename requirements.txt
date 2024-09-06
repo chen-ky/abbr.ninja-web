@@ -3,7 +3,7 @@ certifi==2024.8.30
 charset-normalizer==3.3.2
 cheroot==10.0.1
 idna==3.8
-jaraco.functools==4.0.1
+jaraco.functools==4.0.2
 more-itertools==10.4.0
 requests==2.32.3
 six==1.16.0
