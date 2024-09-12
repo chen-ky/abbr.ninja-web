@@ -7,4 +7,4 @@ jaraco.functools==4.0.2
 more-itertools==10.4.0
 requests==2.32.3
 six==1.16.0
-urllib3==2.2.2
+urllib3==2.2.3
