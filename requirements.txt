@@ -1,4 +1,4 @@
-bottle==0.13.2
+bottle==0.13.4
 certifi==2025.7.14
 charset-normalizer==3.4.1
 cheroot==10.0.1
