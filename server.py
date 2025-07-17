@@ -21,10 +21,12 @@ from cheroot.wsgi import Server
 import requests
 
 TEMPLATE_PATH = "./templates/"
-NO_REDIR_USER_AGENT = ["Gecko", "WebKit", "Blink", "Trident", "Chromium", "KHTML", "Chrome"]
+NO_REDIR_USER_AGENT = ["Gecko", "WebKit", "Blink",
+                       "Trident", "Chromium", "KHTML", "Chrome"]
 AUTO_REDIR_USER_AGENT = ["curl", "wget"]
 API_BASE_URL = "http://localhost:8081/api/v1"
 app = Bottle()
+
 
 @app.route("/r/<id>", method="GET")
 def redirect(id):
@@ -46,16 +48,20 @@ def redirect(id):
     elif resp.status_code == 400:
         error_page(result, 400, "Bad Request", resp_json["msg"])
     else:
-        error_page(result, 404, "Not Found", "The requested link cannot be found.")
+        error_page(result, 404, "Not Found",
+                   "The requested link cannot be found.")
     return result
 
-@app.route("/", method = "GET")
-def index():
-    return static_file("index.html", "static")
 
-@app.route("/<path:path>", method = "GET")
+@app.route("/", method="GET")
+def index():
+    return template("templates/index.tpl")
+
+
+@app.route("/<path:path>", method="GET")
 def resources(path):
     return static_file(path, root="static")
+
 
 def is_no_redir_agent(user_agent):
     for no_redir_ua in NO_REDIR_USER_AGENT:
@@ -63,23 +69,28 @@ def is_no_redir_agent(user_agent):
             return True
     return False
 
+
 def is_auto_redirect_agent(user_agent):
     for redir_ua in AUTO_REDIR_USER_AGENT:
         if redir_ua.lower() in user_agent.lower():
             return True
     return False
 
+
 def redirect_page(resp, encoded_uri, html_safe_uri):
-    resp.body = template("redirect", encoded_uri=encoded_uri, html_safe_uri=html_safe_uri)
+    resp.body = template("templates/redirect.tpl", encoded_uri=encoded_uri,
+                         html_safe_uri=html_safe_uri)
     return resp
+
 
 def error_page(resp, error_code, error_txt, error_msg):
     resp.status = error_code
-    resp.body = template("errors", error_code=error_code, error_txt=error_txt, error_msg=error_msg)
+    resp.body = template("templates/errors.tpl", error_code=error_code,
+                         error_txt=error_txt, error_msg=error_msg)
     return resp
 
+
 if "__main__" == __name__:
-    bottle.TEMPLATE_PATH.insert(0, TEMPLATE_PATH)
     required_env = []
     for env in required_env:
         assert env in os.environ, f"\'{env}\' environment variable not set."
@@ -95,10 +106,10 @@ if "__main__" == __name__:
         port = int(os.getenv("PORT").strip())
 
     if not API_BASE_URL.startswith("http://") \
-    and not API_BASE_URL.startswith("https://"):
+            and not API_BASE_URL.startswith("https://"):
         API_BASE_URL = "https://" + API_BASE_URL
 
-    server = Server((host, port), app, server_name="abbr.ninja-web/0.2.0")    
+    server = Server((host, port), app, server_name="abbr.ninja-web/0.2.0")
     print(f"Listening on {host}:{port}")
     print(f"API server: {API_BASE_URL}")
     try:
