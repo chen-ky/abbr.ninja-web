@@ -108,6 +108,9 @@ if "__main__" == __name__:
         sentry_sdk.init(
             dsn=os.getenv("SENTRY_DSN").strip(),
             send_default_pii=False,
+            traces_sample_rate=1.0,
+            profile_session_sample_rate=1.0,
+            profile_lifecycle="trace",
         )
         print("Sentry SDK initialised")
 
