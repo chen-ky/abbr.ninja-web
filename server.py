@@ -53,6 +53,18 @@ def redirect(id):
     return result
 
 
+@app.error(500)
+def error_500(msg):
+    return template("templates/errors.tpl",
+                    error_txt=response.status_line, error_msg="An error has occurred.")
+
+
+@app.error(404)
+def error_404(msg):
+    return template("templates/errors.tpl",
+                    error_txt=response.status_line, error_msg="Not found.")
+
+
 @app.route("/", method="GET")
 def index():
     return template("templates/index.tpl")
