@@ -1,5 +1,7 @@
 FROM docker.io/library/python:alpine
 
+ARG GIT_HASH="Unknown"
+
 RUN apk update \
     && apk upgrade
 
@@ -28,4 +30,5 @@ USER web:web
 ENV API_BASE_URL="http://127.0.0.1:8081/api/v1"
 ENV HOST="0.0.0.0"
 ENV PORT="8080"
+ENV SENTRY_RELEASE=${GIT_HASH}
 CMD ["python", "server.py"]
