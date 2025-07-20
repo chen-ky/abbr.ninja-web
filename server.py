@@ -19,6 +19,7 @@ import bottle
 from bottle import Bottle, run, static_file, response, template, request
 from cheroot.wsgi import Server
 import requests
+import sentry_sdk
 
 TEMPLATE_PATH = "./templates/"
 NO_REDIR_USER_AGENT = ["Gecko", "WebKit", "Blink",
@@ -103,6 +104,13 @@ def error_page(resp, error_code, error_txt, error_msg):
 
 
 if "__main__" == __name__:
+    if "SENTRY_DSN" in os.environ:
+        sentry_sdk.init(
+            dsn=os.getenv("SENTRY_DSN").strip(),
+            send_default_pii=False,
+        )
+        print("Sentry SDK initialised")
+
     required_env = []
     for env in required_env:
         assert env in os.environ, f"\'{env}\' environment variable not set."
