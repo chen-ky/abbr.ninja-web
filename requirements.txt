@@ -1,7 +1,7 @@
 bottle==0.13.4
 certifi==2025.11.12
 charset-normalizer==3.4.4
-cheroot==10.0.1
+cheroot==11.1.2
 idna==3.10
 jaraco.functools==4.3.0
 more-itertools==10.7.0
