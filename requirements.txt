@@ -8,4 +8,4 @@ more-itertools==10.8.0
 requests==2.34.2
 sentry-sdk==2.58.0
 six==1.17.0
-urllib3==2.6.3
+urllib3==2.7.0
